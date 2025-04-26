@@ -1,0 +1,14 @@
+include:
+  - openspy-web-backend/docker-compose.yaml
+  - openspy-core/docker-compose.yaml
+services:
+  natneg-helper:
+    image: "chcniz/openspy-natneg-helper"
+    hostname: "natneg-helper"
+    restart: on-failure
+    environment:
+      RABBITMQ_URL: amqp://rabbitmq:rabbitmq@rabbit
+      UNSOLICITED_PORT_PROBE_DRIVER: 0.0.0.0:30695
+      UNSOLICITED_IP_PROBE_DRIVER: unset
+      UNSOLICITED_IPPORT_PROBE_DRIVER: unset
+      SKIP_ERTL: 1

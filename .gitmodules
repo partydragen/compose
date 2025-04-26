@@ -1,0 +1,6 @@
+[submodule "openspy-core"]
+	path = openspy-core
+	url = https://github.com/openspy/openspy-core.git
+[submodule "openspy-web-backend"]
+	path = openspy-web-backend
+	url = https://github.com/openspy/openspy-web-backend.git
