@@ -4,3 +4,6 @@
 [submodule "openspy-web-backend"]
 	path = openspy-web-backend
 	url = https://github.com/openspy/openspy-web-backend.git
+[submodule "webservices"]
+	path = webservices
+	url = https://github.com/openspy/webservices.git
