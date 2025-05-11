@@ -39,3 +39,19 @@ services:
       GEOIP_DB_PATH: /GeoLite2-City.mmdb
     volumes:
       - ./geoip/GeoLite2-City.mmdb:/GeoLite2-City.mmdb
+  gamestats-web:
+    image: "chcniz/openspy-gamestats-web"
+    hostname: "gamestats-web"
+    restart: on-failure
+    environment:
+      GAMESTATS_MONGODB_URI: mongodb://OpenSpy:OpenSpy123@mongo:27017
+      PORT: 4000
+  stella-web:
+    image: "chcniz/openspy-bf2142stella-web"
+    hostname: "stella-web"
+    restart: on-failure
+    environment:
+      API_KEY: ELGAoKHyFPfsWhmWF5F/8uNz2YcdTrojCZbRfvlFwBKJIhDUdvMwM4bmljSsEBq57riyXRij8FoqmxWR8C2BQIEaGG68uFJKcQmJlLY2ntAFOYUloccRCr/eBW8sJZsTIGaIdVdsDeDOrRJR487tfFGNHW2Ezp+oVrZVsd3C9e0VobSE1fXdSFz3R5MIqH3bLprfcDLJL/U8gtvUBegOQI22Vviha24W0/76SQSo72Z7i6GrpU/OnrsjcHQSwyC6VeCTv5JjCP/BSsaCK0Zxw3OlzQsPAprQug9Pwm5MrH/pkkxhqLKcCxjsU25Zj+ipkKOzsO+rmqaIMsK6ILke6w==
+      API_ENDPOINT: http://core-web:8080
+      MONGODB_URI: mongodb://OpenSpy:OpenSpy123@mongo:27017
+      PORT: 4000
