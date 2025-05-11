@@ -5,6 +5,12 @@ include:
 services:
   nginx:
     image: nginx:1-alpine
+    restart: on-failure
+    depends_on:
+      - authservices
+      - commerceservice
+      - competitionservice
+      - storageservice
     ports:
       - 8089:80
     volumes:
@@ -21,3 +27,15 @@ services:
       UNSOLICITED_IP_PROBE_DRIVER: unset
       UNSOLICITED_IPPORT_PROBE_DRIVER: unset
       SKIP_ERTL: 1
+  qr-service:
+    image: "chcniz/openspy-qr-service"
+    hostname: "qr-service"
+    restart: on-failure
+    depends_on:
+      - rabbit
+    environment:
+      RABBITMQ_URL: amqp://rabbitmq:rabbitmq@rabbit
+      REDIS_URL: redis://redis:6379
+      GEOIP_DB_PATH: /GeoLite2-City.mmdb
+    volumes:
+      - ./geoip/GeoLite2-City.mmdb:/GeoLite2-City.mmdb
