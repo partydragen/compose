@@ -47,7 +47,7 @@ services:
       GAMESTATS_MONGODB_URI: mongodb://OpenSpy:OpenSpy123@mongo:27017
       PORT: 4000
   stella-web:
-    image: "chcniz/openspy-bf2142stella-web"
+    image: "chcniz/openspy-bf2142-stella-web"
     hostname: "stella-web"
     restart: on-failure
     environment:
